@@ -1,0 +1,124 @@
+#app{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+    height: 90vh;
+    background-size: cover;
+    overflow: hidden;
+    touch-action: pan-up;
+    position: relative;
+}  
+#hero{
+  position: absolute;
+  z-index: 1;
+  background-repeat: no-repeat;
+}
+
+.section-get-quote-card-header {
+    font-family: "Roboto", sans-serif;
+    font-size: 35px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    line-height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    color: var(--primary-blue-color);
+  }
+  .section-get-quote-card-header span {
+    color: var(--primary-beige-color);
+  }
+ 
+  .wrapper {
+    background: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  .wrapper .static-txt {
+    color: var(--primary-blue-color);
+    font-size: 30px;
+    font-weight: 400;
+  }
+  .wrapper .dynamic-txts {
+    height: 90px;
+    line-height: 90px;
+    overflow: hidden;
+    text-align: start;
+  }
+  .dynamic-txts li {
+    list-style: none;
+    color: var(--primary-beige-color);
+    font-size: 30px;
+    font-weight: 500;
+    position: relative;
+    top: 10px;
+    animation: slide 12s steps(4) infinite;
+  }
+  @keyframes slide {
+    100% {
+      top: -360px;
+    }
+  }
+  .dynamic-txts li span {
+    position: relative;
+    margin: 5px 0;
+    line-height: 92px;
+  }
+  .dynamic-txts li span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    height: 100%;
+    width: 100%;
+    background: inherit;
+    border-left: 2px solid var(--primary-blue-color);
+    animation: typing 3s steps(10) infinite;
+  }
+  @keyframes typing {
+    40%,
+    60% {
+      left: calc(100% + 30px);
+    }
+    100% {
+      left: 0;
+    }
+  }
+
+
+ 
+ /* #app {
+    overflow: hidden;
+    touch-action: pan-up;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    text-shadow: 0 0 5px #ffffff, 0 0 20px #000, 0 0 30px #000;
+  } */
+  
+  /* #app h1 {
+    --fontSize: 60px;
+    --lineHeight: 80px;
+    width: auto;
+    height: calc(2 * var(--lineHeight));
+    line-height: var(--lineHeight);
+    margin: calc(50vh - var(--lineHeight)) auto 0;
+    font-size: var(--fontSize);
+    text-transform: uppercase;
+  } */
+  
+  /* #app a {
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+  } */
+  
+  /* #app canvas {
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+  } */

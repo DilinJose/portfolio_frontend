@@ -1,12 +1,12 @@
-import { useState } from 'react'
 import './App.css'
 import Router from './Router/Router'
+import Layout from './Pages/layout'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div>
+      <Layout />
       <Router />
     </div>
   )
