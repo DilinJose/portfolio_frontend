@@ -72,19 +72,19 @@ export default function NavBar() {
             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
           >Home</Link>
           <Link
-            to='/'
+            to='/about'
             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
           >About</Link>
           <Link
-            to='/'
+            to='/skill'
             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
           >Skill</Link>
           <Link
-            to='/'
+            to='/qualification'
             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
           >Qualification</Link>
           <Link
-            to='/'
+            to='/projects'
             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
           >Projects</Link>
           {/* <Popover className="relative">
@@ -131,7 +131,7 @@ export default function NavBar() {
             </PopoverPanel>
           </Popover> */}
           <Link
-            to='/'
+            to='/contact'
             className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
           >Contact Me</Link>
         </PopoverGroup>

@@ -5,7 +5,7 @@ import Layout from './Pages/layout'
 function App() {
 
   return (
-    <div>
+    <div className=''>
       <Layout />
       <Router />
     </div>
