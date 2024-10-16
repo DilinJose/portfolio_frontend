@@ -8,17 +8,14 @@
 
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Dialog,
   DialogPanel,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Popover,
-  PopoverButton,
   PopoverGroup,
-  PopoverPanel,
 } from '@headlessui/react'
 import {
   ArrowPathIcon,
@@ -46,9 +43,24 @@ const callsToAction = [
 
 export default function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolling, setScrolling] = useState(false)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolling(true)
+      } else {
+        setScrolling(false)
+      }
+    }
 
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
   return (
-    <header className="bg-white">
+    <header className={`sticky top-0 z-50 text-white transition-colors duration-300 ${scrolling ? 'bg-neutral-900' : 'bg-transparent'}`}>
+      {/* <header className="bg-slate-800"> */}
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
@@ -69,23 +81,23 @@ export default function NavBar() {
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Link
             to='/'
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >Home</Link>
           <Link
             to='/about'
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >About</Link>
           <Link
             to='/skill'
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >Skill</Link>
           <Link
             to='/qualification'
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >Qualification</Link>
           <Link
             to='/projects'
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >Projects</Link>
           {/* <Popover className="relative">
             <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
@@ -101,9 +113,9 @@ export default function NavBar() {
                 {products.map((item) => (
                   <div
                     key={item.name}
-                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                    className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-black"
                   >
-                    <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                    <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-black group-hover:bg-white">
                       <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
                     </div>
                     <div className="flex-auto">
@@ -116,7 +128,7 @@ export default function NavBar() {
                   </div>
                 ))}
               </div>
-              <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+              <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-black">
                 {callsToAction.map((item) => (
                   <a
                     key={item.name}
@@ -132,18 +144,18 @@ export default function NavBar() {
           </Popover> */}
           <Link
             to='/contact'
-            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
           >Contact Me</Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="#" className="text-sm font-semibold leading-6 text-white">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
         <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-slate-700 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Dilin Jose</span>
@@ -163,27 +175,27 @@ export default function NavBar() {
             </button>
           </div>
           <div className="mt-6 flow-root">
-            <div className="-my-6 divide-y divide-gray-500/10">
+            <div className="-my-6 divide-y divide-black0/10">
               <div className="space-y-2 py-6">
 
                 <Link
                   to='/'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
                 >Home</Link>
                 <Link
                   to='/about'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
                 >About</Link>
                 <Link
                   to='/skill'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
                 >Skill</Link>
                 <Link
                   to='/qualification'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
                 >Qualification</Link>
                 <Disclosure as="div" className="-mx-3">
-                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                  <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-white hover:bg-black">
                     Projects
                     <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
                   </DisclosureButton>
@@ -193,7 +205,7 @@ export default function NavBar() {
                         key={item.name}
                         as="a"
                         href={item.href}
-                        className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                        className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-black"
                       >
                         {item.name}
                       </DisclosureButton>
@@ -202,13 +214,13 @@ export default function NavBar() {
                 </Disclosure>
                 <Link
                   to='contact'
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-black"
                 >Contact Me</Link>
               </div>
               <div className="py-6">
                 <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-black"
                 >
                   Log in
                 </a>

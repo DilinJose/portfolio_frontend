@@ -1,5 +1,5 @@
+import RippleEffect from '../rippleEffect/rippleEffect';
 import './index.css';
-import { useEffect } from 'react';
 // import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js';
 
 function Home() {
@@ -24,27 +24,27 @@ function Home() {
   // }, []);
 
   return (
-    <div id="app" className="flex justify-center items-center">
-      <div id="hero" >
-        <div className=' flex justify-center items-center flex-col text-black'>
-          <>
-            <h1 className='text-4xl font-semibold'>Dilin Jose</h1>
-          </>
-          <div className="wrapper">
-            <ul className="dynamic-txts">
-              <li>
-                <span>Software Developer</span>
-              </li>
-              <li>
-                <span>FrontEnd Developer</span>
-              </li>
-              <li>
-                <span>React JS Developer</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <div>
+      <RippleEffect />
+      <div id="wrapper">
+        <div id="hero" >
+          <div className=' flex justify-center items-center flex-col text-black'>
+            <div className='mb-3'>
+              ‰<h1 className='text-2xl text-yellow-500 font-semibold'>Hello, I'm</h1>
+            </div>
 
+            <>
+              <h1 className='text-4xl text-white font-semibold'>Dilin Jose</h1>
+            </>
+            <div className="wrapper">
+              <div className="dynamic-txts">
+                <div className='my-roles text-white'>React JS Developer</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   );
